@@ -16,9 +16,10 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 8px;
-        width: min(90vw, 400px);
+        width: 100%;
         padding: 8px;
         background-color: #9fd3c7;
         border-radius: 8px;
+        box-sizing: border-box;
     }
 </style>

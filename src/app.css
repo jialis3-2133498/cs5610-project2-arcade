@@ -1,0 +1,220 @@
+:root {
+    --color-bg: #e6e2d3;  /* main page background*/
+    --color-surface: #dac292; /* cards / secondary areas*/
+    --color-accent: #b9936c; /* accent / navbar / buttons / highlights*/
+    --color-accent-dark: #6f4e37;
+    --color-muted: #c4b7a6; /* borders / muted sections*/
+    --color-text: #000000; /* primary text*/
+    --space-small: 0.5rem;
+    --space-medium: 1rem;
+    --space-large: 2rem;
+
+    --text-small: 0.875rem;
+    --text-base: 1rem;
+    --text-medium: 1.25rem;
+    --text-large: 1.5rem;
+    --text-xlarge: 2rem;
+
+    --radius-medium: 0.5rem;
+    --tap-target-min: 44px;
+    --content-width: 65ch;
+    --puzzle-size: 20rem;
+
+    --color-puzzle-open: #ffffff;
+    --color-puzzle-blocked: #000000; 
+}
+*, *::before, *::after {box-sizing: border-box;}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+    font-size: var(--text-base);
+    line-height: 1.5;
+    margin: 0;
+}
+
+main {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: var(--space-medium);
+    flex: 1;
+}
+
+h1 {
+    font-size: var(--text-large);
+    margin: var(--space-medium) 0;
+}
+.site-title {
+    font-size: var(--text-medium);
+    font-weight: bold;
+    margin: 0;
+}
+
+h2 {
+    font-size: var(--text-medium);
+    margin: var(--space-medium) 0;
+}
+
+h3 {
+    font-size: var(--text-base);
+    margin: var(--space-medium) 0;
+}
+
+p {
+    font-size: var(--text-base);
+    margin: var(--space-medium) 0;
+}
+
+.profile-photo {
+    display: block;
+    max-width: 12rem;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-medium);
+    margin: var(--space-medium) 0 var(--space-large);
+}
+
+a {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: auto;
+    transition: color 0.2s;
+}
+
+@media(hover: hover) {
+    a:hover{
+        color: var(--color-accent-dark);
+    } 
+    nav a:hover {
+        color: var(--color-text);
+        text-decoration-thickness: 3px;
+    }
+}
+
+a:focus-visible {
+    outline: 2px dashed var(--color-text);
+    outline-offset: 2px;
+}
+
+header {
+    background-color: var(--color-accent);
+    padding: 0 var(--space-medium) var(--space-small);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav ul {
+    max-width: 36rem;
+    margin: 0 auto;
+
+    list-style: none;
+    padding: 0;
+
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-small);
+
+    align-items: center;
+
+}
+
+nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target-min);
+    padding: var(--space-small);
+}
+
+nav a[aria-current="page"] {
+    font-weight: 800;
+    background-color: var(--color-bg);
+    border-radius: var(--radius-medium);
+    text-decoration-thickness: 2px;
+}
+
+@media (min-width: 48rem) {
+    h1 {
+        font-size: var(--text-xlarge);
+    }
+    h2 {
+        font-size: var(--text-large);
+    }
+    h3 {
+        font-size: var(--text-medium);
+    }
+
+    nav ul {
+        gap: var(--space-medium);
+    }
+
+}
+
+.site-footer {
+    text-align: center;
+    padding: var(--space-large) var(--space-medium);
+    font-size: var(--text-small);
+}
+.site-footer p {
+    margin: 0;
+    font-size: var(--text-small);
+}
+
+.site-footer::before {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 2px;
+    background-color: var(--color-accent-dark);
+    margin: 0 auto var(--space-small);
+}
+
+.contact-preference label {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target-min);
+    cursor: pointer;
+    font-weight: bold;
+}
+#show-preference {
+    margin-right: var(--space-small);
+}
+
+.preference-note {
+    display: none;
+    margin-top: var(--space-small);
+    padding: var(--space-medium);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-medium);
+}
+
+#show-preference:checked ~ .preference-note {
+    display: block;
+}
+
+#show-preference:focus-visible {
+    outline: 2px dashed var(--color-text);
+    outline-offset: 2px;
+}
+
+.content-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target-min);
+    min-width: var(--tap-target-min);
+}
+
+main.crossword-layout {
+    max-width: 70rem;
+    width: 100%;
+}
