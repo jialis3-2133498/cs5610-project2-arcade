@@ -6,6 +6,10 @@
     />
 </svelte:head>
 
+<script>
+    import { resolve } from '$app/paths';
+</script>
+
 <h1>Welcome to My Crossword Puzzle Game</h1>
 
 <p>
@@ -13,5 +17,5 @@
     If you get stuck, use the clues, think creatively, and keep trying.
 </p>
 
-<a class="content-link" href="/crossword">Play Crossword</a>
+<a href={resolve('/crossword')}>Play Crossword</a>
 

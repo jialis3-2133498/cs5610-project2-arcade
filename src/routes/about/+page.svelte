@@ -6,10 +6,18 @@
     />
 </svelte:head>
 
+<script>
+    import { asset } from '$app/paths';
+</script>
+
 <h1>Who is Jiali Sheng?</h1>
 <section>
     <h2>About Me</h2>
-    <img class="profile-photo" src="/images/Jiali_Sheng_Photo.png" alt="Portrait of Jiali Sheng">
+    <img
+        class="profile-photo"
+        src={asset('images/Jiali_Sheng_Photo.png')}
+        alt="Portrait of Jiali Sheng"
+    />    
     <p>
         I am from China and now live in Seattle. Seattle is my favorite city on the planet so far!
         I like to run, cook, go to the gym, hike, listen to music, and watch movies!

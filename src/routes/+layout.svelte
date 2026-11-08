@@ -14,7 +14,7 @@
 
 <Navbar />
 
-<main class:crossword-layout={page.url.pathname === '/crossword'}>
+<main class:crossword-layout={page.route.id === '/crossword'}>
     {@render children()}
 </main>
 
