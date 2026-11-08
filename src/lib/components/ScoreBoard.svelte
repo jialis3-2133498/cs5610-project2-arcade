@@ -18,12 +18,34 @@
     .scoreboard {
         display: flex;
         gap: 12px;
+        width: 100%;
+        max-width: 400px;
     }
     .score, .best-score {
-        background-color: #9fd3c7;
-        min-width: 100px;
-        padding: 12px, 20px;
+        flex: 1;
+        background-color: #DAC292;
+        min-width: 0;
+        padding: 12px 20px;
         border-radius: 8px;
         text-align: center;
+    }
+
+    .score h2, .best-score h2 {
+        font-size: 1rem;
+        margin: 0 0 0.5rem;
+    }
+
+    .score p, .best-score p {
+        margin: 0;
+    }
+
+    @media (max-width: 480px) {
+        .scoreboard {
+            max-width: 280px;
+        }
+
+        .score, .best-score {
+            padding: 0.5rem;
+        }
     }
 </style>

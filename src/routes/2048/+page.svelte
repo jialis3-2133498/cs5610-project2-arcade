@@ -107,56 +107,78 @@
 <svelte:window onkeydown={handleKeyDown} />
 
 
+<div class="game-page">
+    <h1>2048</h1>
+    <p>Welcome to my 2048 game!</p>
 
-<h1>2048</h1>
 
-<p>Welcome to my 2048 game!</p>
+    <div class="game-content">
+        <ScoreBoard {score} bestScore={gameStats.bestScore} />
 
-<ScoreBoard {score} bestScore={gameStats.bestScore} />
-
-<div class = "game-container">
-    <GameBoard {board} />
-    <div class="sr-only" role="status" aria-live="polite">
-        {#if isGameOver}
-            Game Over! No more moves available.
-        {:else if hasWon && !keepPlaying}
-            Congratulations! You reached 2048!
-        {/if}
-    </div>
-
-    {#if isGameOver}
-        <div class="game-overlay" transition:fade={{ duration: 300 }}>
-            <h2>Game Over!</h2>
-            <p>No more moves available.</p>
-            <button onclick={newGame}>Try Again</button>
+        <div class="sr-only" aria-live="polite" aria-atomic="true">
+            Current score: {score}. Best score: {gameStats.bestScore}.
         </div>
-        {:else if hasWon && !keepPlaying}
-            <div class="game-overlay" transition:fade={{ duration: 300 }}>
-                <div transition:scale={{ duration: 350, start: 0.8 }}>
-                    <h2>Congratulations! You win!</h2>
-                    <p>You reached 2048!</p>
-                    <button onclick={() => keepPlaying = true}>
-                        Continue Playing
-                    </button>
-                </div>
+
+        <div class = "game-container">
+            <GameBoard {board} />
+            <div class="sr-only" role="status" aria-live="polite">
+                {#if isGameOver}
+                    Game Over! No more moves available.
+                {:else if hasWon && !keepPlaying}
+                    Congratulations! You reached 2048!
+                {/if}
             </div>
-    {/if}
-</div>
 
-<GameControls onNewGame={newGame} />
+            {#if isGameOver}
+                <div class="game-overlay" transition:fade={{ duration: 300 }}>
+                    <h2>Game Over!</h2>
+                    <p>No more moves available.</p>
+                    <button onclick={newGame}>Try Again</button>
+                </div>
+                {:else if hasWon && !keepPlaying}
+                    <div class="game-overlay" transition:fade={{ duration: 300 }}>
+                        <div transition:scale={{ duration: 350, start: 0.8 }}>
+                            <h2>Congratulations! You win!</h2>
+                            <p>You reached 2048!</p>
+                            <button onclick={() => keepPlaying = true}>
+                                Continue Playing
+                            </button>
+                        </div>
+                    </div>
+            {/if}
+        </div>
+
+        <GameControls onNewGame={newGame} />
 
 
-<div class="controls" role="group" aria-label="Game movement controls">
-    <button class="up" aria-label="Move up" onclick={() => handleMove("up")}>↑</button>
-    <button class="left" aria-label="Move left" onclick={() => handleMove("left")}>←</button>
-    <button class="down" aria-label="Move down" onclick={() => handleMove("down")}>↓</button>
-    <button class="right" aria-label="Move right" onclick={() => handleMove("right")}>→</button>
+        <div class="controls" role="group" aria-label="Game movement controls">
+            <button class="up" aria-label="Move up" onclick={() => handleMove("up")}>↑</button>
+            <button class="left" aria-label="Move left" onclick={() => handleMove("left")}>←</button>
+            <button class="down" aria-label="Move down" onclick={() => handleMove("down")}>↓</button>
+            <button class="right" aria-label="Move right" onclick={() => handleMove("right")}>→</button>
+        </div>
+    </div>
 </div>
 
 <style>
+    .game-page {
+        width: 100%;
+    }
+
+    .game-content {
+        width: 100%;
+        max-width: 400px;
+        margin-inline: auto;
+    }
     .game-container {
         position: relative;
-        width: min(90vw, 400px);
+        width: 100%;
+    }
+
+    @media (max-width: 480px) {
+        .game-content {
+            max-width: 280px;
+        }
     }
 
     .game-overlay {
@@ -253,7 +275,7 @@
         grid-row: 2;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
         .controls {
             display: none;
         }
