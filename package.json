@@ -36,6 +36,6 @@
 		"vite": "^8.3.0"
 	},
 	"dependencies": {
-		"@jialisheng/arcade-core": "^0.1.1"
+		"@jialisheng/arcade-core": "^0.1.2"
 	}
 }

@@ -1,3 +1,3 @@
 export const gameStats = $state({
-    bestScore: 0
+	bestScore: 0
 });
